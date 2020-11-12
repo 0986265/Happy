@@ -28,7 +28,7 @@ public class ScreenManager : MonoBehaviour
     }
     public void LoginUser()
     {
-        StartCoroutine(Login("test@student.com", "testing1234"));
+        StartCoroutine(Login("t@t.com", "1234"));
     }
 
     IEnumerator GetUsers()
