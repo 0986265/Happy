@@ -10,9 +10,6 @@ $conn = new mysqli($servername, $username, $password, $db);
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
-} else {
-    // Success message
-echo "Connected successfully<br>";
 }
 
 // Variables from user app
@@ -20,7 +17,7 @@ $loginEmail = $_POST['loginEmail']; // Fill this variable from Unity
 $plainPassUnity = $_POST['loginPass']; // Fill with plain password
 
 // Get data
-$sql = "SELECT password FROM students WHERE email = '" . $loginEmail . "'";
+$sql = "SELECT * FROM students WHERE email = '" . $loginEmail . "'";
 
 $result = $conn->query($sql);
 
@@ -28,8 +25,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       if (password_verify($plainPassUnity, $row["password"])) {
-        echo "Login succeed";
-        echo "true";
+        echo json_encode($row);
       } else {
         echo "Wrong credentials";
       }
