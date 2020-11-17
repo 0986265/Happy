@@ -25,7 +25,14 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       if (password_verify($plainPassUnity, $row["password"])) {
-        echo json_encode($row);
+
+        $return["id"] = $row["id"];
+        $return["firstname"] = $row["first_name"];
+        $return["lastname"] = $row["last_name"];
+        $return["email"] = $row["email"];
+        $return["nickname"] = $row["nickname"];
+
+        echo json_encode($return);
       } else {
         echo "Wrong credentials";
       }
