@@ -13,8 +13,8 @@ if ($conn->connect_error) {
 }
 
 // Variables from user app
-$loginEmail = $_POST['loginEmail']; // Fill this variable from Unity
-$plainPassUnity = $_POST['loginPass']; // Fill with plain password
+$loginEmail = htmlentities($_POST['loginEmail']); // Fill this variable from Unity
+$plainPassUnity = htmlentities($_POST['loginPass']); // Fill with plain password
 
 // Get data
 $sql = "SELECT * FROM students WHERE email = '" . $loginEmail . "'";
