@@ -28,7 +28,7 @@ public class ScreenManager : MonoBehaviour
     }
     public void LoginUser()
     {
-        StartCoroutine(Login("t@t.com", "1234"));
+        StartCoroutine(Login("a@a.com", "1234"));
     }
 
     IEnumerator GetUsers()
@@ -62,9 +62,14 @@ public class ScreenManager : MonoBehaviour
             {
                 Debug.Log(www.error);
             }
+            
             else
             {
-                Debug.Log(www.downloadHandler.text);
+                //Create Object from Json
+                LeerlingObject leerling = LeerlingObject.CreateFromJSON(www.downloadHandler.text);
+                
+
+
             }
         }
     }
