@@ -20,7 +20,11 @@ $timestamp = date('Y-m-d'); // Current day (year, month, day)
 
 $sql = "INSERT INTO feelings (student_id, score, comment, created_at) VALUES ('$studentId', '$feelingScore', '$feelingComment', '$timestamp')";
 
-$resultId = $conn->query($sql);
+$feedback = $conn->query($sql);
+
+if ($feedback == false) {
+  console.log("It broke, feedback boolean is false");
+}
 
 $conn->close();
 
