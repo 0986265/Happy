@@ -12,15 +12,15 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-// Variables from user app
+// Variables from user app (Unity)
+$studentId = $_POST['userID']; // Fill with unique student ID
 $feelingScore = $_POST['feelingScore']; // Fill with feeling (1 to 5)
 $feelingComment = $_POST['feelingComment']; // Fill with optional comment
+$timestamp = date('Y-m-d'); // Current day (year, month, day)
 
-$id = "SELECT id FROM students WHERE email = '" . $loginEmail . "'";
+$sql = "INSERT INTO feelings (student_id, score, comment, created_at) VALUES ('$studentId', '$feelingScore', '$feelingComment', '$timestamp')";
 
-$resultId = $conn->query($id);
-
-$sql = "INSERT INTO feelings (student_id, score, comment) VALUES ('$id', '$feelingScore', '$feelingComment')";
+$resultId = $conn->query($sql);
 
 $conn->close();
 
