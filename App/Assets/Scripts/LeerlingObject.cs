@@ -2,23 +2,71 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeerlingObject
+public static class LeerlingObject
 {
-    public int id;
 
-    public string firstname;
-    public string lastname;
+    public static int id;
 
-    public string email;
-    public string nickname;
+    public static string firstname, lastname, email, nickname;
 
-    //public string color;
-    //public string interests;
-
-    ///public string avatar;
-
-    public static LeerlingObject CreateFromJSON(string jsonString)
+    public static int Id
     {
-        return JsonUtility.FromJson<LeerlingObject>(jsonString);
+        get
+        {
+            return id;
+        }
+        set
+        {
+            id = value;
+        }
     }
+
+    public static string Firstname
+    {
+        get
+        {
+            return firstname;
+        }
+        set
+        {
+            firstname = value;
+        }
+    }
+
+    public static string Lastname
+    {
+        get
+        {
+            return lastname;
+        }
+        set
+        {
+            lastname = value;
+        }
+    }
+
+    public static string Email
+    {
+        get
+        {
+            return email;
+        }
+        set
+        {
+            email = value;
+        }
+    }
+
+    public static string Nickname
+    {
+        get
+        {
+            return nickname;
+        }
+        set
+        {
+            nickname = value;
+        }
+    }
+
 }
