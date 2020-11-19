@@ -37,6 +37,10 @@
             return $this->conn->query($sql);
         }
 
+        public function DbClose(){
+            $this->conn->close();
+        }
+
     }
 
 ?>
