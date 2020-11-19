@@ -6,11 +6,10 @@
     $conn = new DbConn;
 
     // Variables from user app
-    // $loginEmail = $_POST['loginEmail']; // Fill this variable from Unity
+    $loginEmail = $_POST['loginEmail']; // Fill this variable from Unity
 
     // Get data
-    // $result = $conn->DbSelect('*', 'students', 'email = "{$loginEmail}"');
-    $result = $conn->DbSelect('*', 'students', 'email = "s@l.com"');
+    $result = $conn->DbSelect('*', 'students', "email = '{$loginEmail}'");
 
     if($result->num_rows > 0){
 
@@ -38,5 +37,5 @@
         echo "Email does not exist";
     }
 
-
+    $conn->DbClose();
 ?>

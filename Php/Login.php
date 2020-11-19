@@ -5,8 +5,8 @@ require 'DatabaseConn.php';
 $conn = new DbConn;
 
 // Variables from user app
-// $loginEmail = $_POST['loginEmail']; // Fill this variable from Unity
-// $plainPassUnity = $_POST['loginPass']; // Fill with plain password
+$loginEmail = $_POST['loginEmail']; // Fill this variable from Unity
+$plainPassUnity = $_POST['loginPass']; // Fill with plain password
 
 // Get data
 $result = $conn->DbSelect('*', 'students', "email='{$loginEmail}'");
@@ -24,6 +24,7 @@ if ($result->num_rows > 0) {
         $return["lastname"] = $row["last_name"];
         $return["email"] = $row["email"];
         $return["nickname"] = $row["nickname"];
+        $return["active"] = $row["active"];
 
         echo json_encode($return);
       } else {
