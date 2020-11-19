@@ -12,6 +12,8 @@ public class LeerlingJSONConvert
     public string email;
     public string nickname;
 
+    public int active;
+
     public static LeerlingJSONConvert CreateFromJSON(string jsonString)
     {
         return JsonUtility.FromJson<LeerlingJSONConvert>(jsonString);
