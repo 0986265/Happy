@@ -5,9 +5,12 @@
     // Create connection
     $conn = new DbConn;
 
+    // Variables from user app
+    // $loginEmail = $_POST['loginEmail']; // Fill this variable from Unity
+
     // Get data
-    // $sql = "SELECT * FROM students WHERE email = 'test@student.com'";
-    $result = $conn->DbSelect('*', 'students', 'email = "test@student.com"');
+    // $result = $conn->DbSelect('*', 'students', 'email = "{$loginEmail}"');
+    $result = $conn->DbSelect('*', 'students', 'email = "s@l.com"');
 
     if($result->num_rows > 0){
 

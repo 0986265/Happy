@@ -26,9 +26,8 @@
         }
 
         // Update query with an optional last parameter
-        public function DbUpdate($table, $update, $where_claus){
-            // $sql = "UPDATE {$table} SET {$update}". ($where_claus != null ? "WHERE {$where_claus};" : ";");
-            $sql = "UPDATE {$table} SET {$update} WHERE {$where_claus}";
+        public function DbUpdate($table, $update, $where_claus = null){
+            $sql = "UPDATE {$table} SET {$update} ". ($where_claus != null ? "WHERE {$where_claus};" : ";");
             return $this->conn->query($sql);
         }
 
