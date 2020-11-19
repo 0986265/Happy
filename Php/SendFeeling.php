@@ -18,6 +18,6 @@ if ($feedback == false) {
   console.log("It broke, feedback boolean is false");
 }
 
-$conn->close();
+$conn->DbClose();
 
 ?>
