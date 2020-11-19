@@ -1,16 +1,14 @@
 <?php
-    require 'DatabaseConn.php';
+require 'DatabaseConn.php';
 
-    // Create connection
-    $conn = new DbConn;
+// Create connection
+$conn = new DbConn;
 
 // Variables from user app
 $loginEmail = $_POST['loginEmail']; // Fill this variable from Unity
 $plainPassUnity = $_POST['loginPass']; // Fill with plain password
 
 // Get data
-// $sql = "SELECT * FROM students WHERE email = '" . $loginEmail . "'";
-
 $result = $conn->DbSelect('*', 'students', "email='{$loginEmail}'");
 
 if ($result->num_rows > 0) {

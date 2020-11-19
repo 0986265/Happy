@@ -1,8 +1,8 @@
 <?php
-  require 'DatabaseConn.php';
+require 'DatabaseConn.php';
 
-  // Create connection
-  $conn = new DbConn;
+// Create connection
+$conn = new DbConn;
 
 // Variables from user app (Unity)
 $studentId = $_POST['userID']; // Fill with unique student ID
