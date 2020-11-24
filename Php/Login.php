@@ -1,25 +1,18 @@
 <?php
-$servername = "boostworks.online";
-$username = "boostworksonline_ced-app";
-$password = "SyoYiTgKYj$6925&aF3y";
-$db = "boostworksonline_ced";
+require 'DatabaseConn.php';
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $db);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+$conn = new DbConn;
 
 // Variables from user app
 $loginEmail = $_POST['loginEmail']; // Fill this variable from Unity
 $plainPassUnity = $_POST['loginPass']; // Fill with plain password
 
 // Get data
-$sql = "SELECT * FROM students WHERE email = '" . $loginEmail . "'";
+$result = $conn->DbSelect('*', 'students', "email='{$loginEmail}'");
 
-$result = $conn->query($sql);
+// $result = $conn->DbSelect('*', 'students', 'email = "s@l.com"');
+
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -31,6 +24,7 @@ if ($result->num_rows > 0) {
         $return["lastname"] = $row["last_name"];
         $return["email"] = $row["email"];
         $return["nickname"] = $row["nickname"];
+        $return["active"] = $row["active"];
 
         echo json_encode($return);
       } else {
@@ -41,6 +35,6 @@ if ($result->num_rows > 0) {
   echo "Email does not exist";
 }
 
-$conn->close();
+$conn->DbClose();
 
 ?>

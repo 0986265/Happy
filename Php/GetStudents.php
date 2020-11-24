@@ -1,23 +1,11 @@
 <?php
-$servername = "boostworks.online";
-$username = "boostworksonline_ced-app";
-$password = "SyoYiTgKYj$6925&aF3y";
-$db = "boostworksonline_ced";
+require 'DatabaseConn.php';
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $db);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-} else {
-    // Success message
-echo "Connected successfully";
-}
+$conn = new DbConn;
 
 // Get data
-$sql = "SELECT first_name, last_name FROM students";
-$result = $conn->query($sql);
+$result = $conn->DbSelect('first_name, last_name', 'students');
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -28,6 +16,6 @@ if ($result->num_rows > 0) {
     echo "0 results";
   }
 
-  $conn->close();
+  $conn->DbClose();
 
 ?>
