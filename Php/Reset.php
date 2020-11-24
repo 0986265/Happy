@@ -10,6 +10,7 @@
 
     // Get data
     $result = $conn->DbSelect('*', 'students', "email = '{$loginEmail}'");
+    // $result = $conn->DbSelect('*', 'students', "email = 'test@student.com'");
 
     if($result->num_rows > 0){
 
@@ -27,7 +28,16 @@
             $where_claus = "id={$row['id']}";
 
             if($conn->DbUpdate('students', $update, $where_claus)){
-                echo "New passport is {$newPass}";
+                // echo "New passport is {$newPass}";
+
+                $msg = "Your password has been reset. Your new password is {$newPass}";
+
+                $headers = array(
+                    'From' => 'webmaster@tle_app.com',
+                    'X-Mailer' => 'PHP/' . phpversion()
+                );
+                
+                mail($loginEmail, 'Password reset', $msg, $headers);
             }else{
                 echo "Password failed";
             }
