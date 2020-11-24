@@ -10,7 +10,8 @@ public class Login : MonoBehaviour
     public TMP_InputField usernameField;
     public TMP_InputField passwordField;
 
-    public GameObject nextScreen;
+    public GameObject feelingScreen;
+    public GameObject accountScreen;
 
     void Start()
     {
@@ -68,9 +69,16 @@ public class Login : MonoBehaviour
                     LeerlingObject.Lastname = leerling.lastname;
                     LeerlingObject.Email = leerling.email;
                     LeerlingObject.Nickname = leerling.nickname;
+                    LeerlingObject.Active = leerling.active;
 
                     //Continue to next screen
-                    FindObjectOfType<ScreenManager>().OpenScreen(nextScreen);
+                    if (LeerlingObject.Active == 1)
+                    {
+                        FindObjectOfType<ScreenManager>().OpenScreen(feelingScreen);
+                    } else
+                    {
+                        FindObjectOfType<ScreenManager>().OpenScreen(accountScreen);
+                    }
                 }
                 catch
                 {

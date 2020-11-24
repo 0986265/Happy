@@ -5,7 +5,7 @@ using UnityEngine;
 public static class LeerlingObject
 {
 
-    public static int id;
+    public static int id, active;
 
     public static string firstname, lastname, email, nickname;
 
@@ -66,6 +66,18 @@ public static class LeerlingObject
         set
         {
             nickname = value;
+        }
+    }
+
+    public static int Active
+    {
+        get
+        {
+            return active;
+        }
+        set
+        {
+            active = value;
         }
     }
 
