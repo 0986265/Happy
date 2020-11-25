@@ -7,11 +7,10 @@
 
     // Variables from user app
     $loginEmail = $_POST['loginEmail']; // Fill this variable from Unity
-    echo $loginEmail;
+
     // Get data
-    $result = $conn->DbSelect('*', 'students', "email = {$loginEmail}");
-    // $result = $conn->DbSelect('*', 'students', "email = 'test@student.com'");
-    
+    $result = $conn->DbSelect('*', 'students', "email = '{$loginEmail}'");
+
     if($result->num_rows > 0){
 
         while($row = $result->fetch_assoc()){
