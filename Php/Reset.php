@@ -36,9 +36,9 @@
                     'X-Mailer' => 'PHP/' . phpversion()
                 );
                 
-                mail('sonnylo@hotmail.com', 'Password reset', $msg, $headers);
+                mail($loginEmail, 'Password reset', $msg, $headers);
             }else{
-                echo "Password failed";
+                echo "Password reset failed";
             }
             
         }
