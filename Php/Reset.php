@@ -10,7 +10,6 @@
 
     // Get data
     $result = $conn->DbSelect('*', 'students', "email = '{$loginEmail}'");
-    // $result = $conn->DbSelect('*', 'students', "email = 'test@student.com'");
 
     if($result->num_rows > 0){
 
