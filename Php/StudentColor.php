@@ -9,7 +9,7 @@ $studentId = $_POST['studentId']; // Fill with unique student ID
 $selectedColor = $_POST['selectedColor']; // Fill with color (red, geen, blue, yellow, purple,)
 
 // Update data
-$update = "color='{$selectedColor}'";
+$update = "color='{$selectedColor}', active='1'";
 $where_claus = "id={$studentId}";
 
 if($conn->DbUpdate('students', $update, $where_claus)){
