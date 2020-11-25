@@ -6179,7 +6179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1271d43d4d7fc0e4f962f12b5aeeaf1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usernameField: {fileID: 628876560}
+  emailField: {fileID: 644309280}
 --- !u!114 &1041150234
 MonoBehaviour:
   m_ObjectHideFlags: 0
