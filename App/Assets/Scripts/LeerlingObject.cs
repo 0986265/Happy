@@ -7,7 +7,7 @@ public static class LeerlingObject
 
     public static int id, active;
 
-    public static string firstname, lastname, email, nickname;
+    public static string firstname, lastname, email, nickname, avatar, color;
 
     public static int Id
     {
@@ -78,6 +78,30 @@ public static class LeerlingObject
         set
         {
             active = value;
+        }
+    }
+
+    public static string Avatar
+    {
+        get
+        {
+            return avatar;
+        }
+        set
+        {
+            avatar = value;
+        }
+    }
+
+    public static string Color
+    {
+        get
+        {
+            return color;
+        }
+        set
+        {
+            color = value;
         }
     }
 

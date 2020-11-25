@@ -70,8 +70,11 @@ public class Login : MonoBehaviour
                     LeerlingObject.Email = leerling.email;
                     LeerlingObject.Nickname = leerling.nickname;
                     LeerlingObject.Active = leerling.active;
+                    LeerlingObject.Avatar = leerling.avatar;
+                    LeerlingObject.Color = leerling.color;
 
                     //Continue to next screen
+                    //if active go to feelings, else go to account creation screen
                     if (LeerlingObject.Active == 1)
                     {
                         FindObjectOfType<ScreenManager>().OpenScreen(feelingScreen);

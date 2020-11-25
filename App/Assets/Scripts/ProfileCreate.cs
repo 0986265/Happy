@@ -6,10 +6,12 @@ using UnityEngine.Networking;
 
 public class ProfileCreate : MonoBehaviour
 {
-    private string selectedAvatar = "monster1";
+    private string selectedAvatar = "monster-1";
+    private string selectedColor = "blue";
 
     public Image selectedAvatarImage;
-    public Sprite[] avatarImages;
+
+    public GameObject colorScreen;
 
     public GameObject feelingScreen;
 
@@ -17,8 +19,8 @@ public class ProfileCreate : MonoBehaviour
     public void ChooseAvatar(string avatarId)
     {
         selectedAvatar = avatarId;
-        string[] selectedAvatarId = avatarId.Split('r');
-        selectedAvatarImage.sprite = avatarImages[int.Parse(selectedAvatarId[1]) - 1];
+        string[] selectedAvatarId = avatarId.Split('-');
+        selectedAvatarImage.sprite = ApplicationSettings.Instance.avatarPack.avatars[int.Parse(selectedAvatarId[1]) - 1];
     }
 
     public void SubmitAvatar()
@@ -43,7 +45,42 @@ public class ProfileCreate : MonoBehaviour
             else
             {
                 Debug.Log(www.downloadHandler.text);
-                FindObjectOfType<ScreenManager>().OpenScreen(feelingScreen);
+                LeerlingObject.Avatar = selectedAvatar;
+                ScreenManager.Instance.OpenScreen(colorScreen);
+            }
+
+        }
+    }
+
+    public void ChooseColor(string color)
+    {
+        selectedColor = color;
+    }
+
+    public void SubmitColor()
+    {
+        StartCoroutine(SubmitColorCo());
+    }
+
+    IEnumerator SubmitColorCo()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("studentId", LeerlingObject.Id);
+        form.AddField("selectedColor", selectedColor);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://boostworks.online/StudentColor.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+                LeerlingObject.Color = selectedColor;
+                ScreenManager.Instance.OpenScreen(feelingScreen);
             }
 
         }

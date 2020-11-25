@@ -9,6 +9,23 @@ public class ScreenManager : MonoBehaviour
     public GameObject currentScreen;
     public GameObject startScreen;
 
+    public GameObject dashboard;
+
+    private static ScreenManager _instance;
+
+    public static ScreenManager Instance { get { return _instance; } }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
     void Start()
     {
         currentScreen = startScreen;
@@ -19,6 +36,13 @@ public class ScreenManager : MonoBehaviour
     {
         currentScreen.SetActive(false);
         currentScreen = screen;
+        currentScreen.SetActive(true);
+    }
+
+    public void OpenDashboard()
+    {
+        currentScreen.SetActive(false);
+        currentScreen = dashboard;
         currentScreen.SetActive(true);
     }
 

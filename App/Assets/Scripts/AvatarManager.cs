@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AvatarManager : ScriptableObject
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/AvatarManagerScriptableObject", order = 1)]
+public class AvatarManagerScriptableObject : ScriptableObject
 {
-    public Sprite[] monsterAvatars;
+    public Sprite[] avatars;
 }
