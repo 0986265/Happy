@@ -25,6 +25,7 @@ if ($result->num_rows > 0) {
         $return["email"] = $row["email"];
         $return["nickname"] = $row["nickname"];
         $return["active"] = $row["active"];
+        $return["avatar"] = $row["avatar"];
 
         echo json_encode($return);
       } else {
