@@ -15,6 +15,11 @@ public class ProfileCreate : MonoBehaviour
 
     public GameObject feelingScreen;
 
+    public void Awake()
+    {
+        string[] selectedAvatarId = LeerlingObject.Avatar.Split('-');
+        selectedAvatarImage.sprite = ApplicationSettings.Instance.avatarPack.avatars[int.Parse(selectedAvatarId[1]) - 1];
+    }
 
     public void ChooseAvatar(string avatarId)
     {
