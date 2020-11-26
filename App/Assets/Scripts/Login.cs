@@ -21,6 +21,7 @@ public class Login : MonoBehaviour
     public void LoginUser()
     {
         StartCoroutine(LoginUserCo(usernameField.text, passwordField.text));
+        // Debug.Log(usernameField.text);
     }
 
     IEnumerator GetUsers()
