@@ -28,8 +28,17 @@
 
             if($conn->DbUpdate('students', $update, $where_claus)){
                 echo "New passport is {$newPass}";
+
+                $msg = "Your password has been reset. Your new password is {$newPass}";
+
+                $headers = array(
+                    'From' => 'webmaster@tle_app.com',
+                    'X-Mailer' => 'PHP/' . phpversion()
+                );
+                
+                mail($loginEmail, 'Password reset', $msg, $headers);
             }else{
-                echo "Password failed";
+                echo "Password reset failed";
             }
             
         }
