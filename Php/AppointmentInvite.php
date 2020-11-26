@@ -14,8 +14,7 @@ $createdAt = date('Y-m-d'); // Current day (year, month, day)
 // $studentId = 2;
 // $appointmentDate = "\"2029-12-01\""; 
 
-if($conn->DbInsert('appointments', 'student_id, counselor_id, subject, message, created_at', 
-"{$studentId}, {$counselorId}, {$subject}, {$message}, {$createdAt}")){
+if($conn->DbInsert("appointments", "student_id, counselor_id, subject, message, created_at", "{$studentId}, {$counselorId}, '{$subject}', '{$message}', {$createdAt}")){
     echo "Appointment sent";
 }else{
     echo "Something went wrong";
