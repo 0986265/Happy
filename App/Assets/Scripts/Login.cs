@@ -74,6 +74,8 @@ public class Login : MonoBehaviour
                     LeerlingObject.Avatar = leerling.avatar;
                     LeerlingObject.Color = leerling.color;
 
+                    PlayerPrefs.SetString("Color", LeerlingObject.Color);
+
                     //Continue to next screen
                     //if active go to feelings, else go to account creation screen
                     if (LeerlingObject.Active == 1)

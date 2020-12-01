@@ -9,6 +9,7 @@ public class ApplicationSettings : MonoBehaviour
     public static ApplicationSettings Instance { get { return _instance; } }
 
     public AvatarManagerScriptableObject avatarPack;
+    public ColorManagerScriptableObject colorPack;
 
     private void Awake()
     {

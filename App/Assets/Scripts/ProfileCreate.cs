@@ -85,6 +85,8 @@ public class ProfileCreate : MonoBehaviour
             {
                 Debug.Log(www.downloadHandler.text);
                 LeerlingObject.Color = selectedColor;
+                PlayerPrefs.SetString("Color", LeerlingObject.Color);
+                Debug.Log("leerling Color: " + LeerlingObject.Color);
                 ScreenManager.Instance.OpenScreen(feelingScreen);
             }
 
