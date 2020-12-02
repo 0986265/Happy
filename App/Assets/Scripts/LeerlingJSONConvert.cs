@@ -11,6 +11,8 @@ public class LeerlingJSONConvert
 
     public string email;
     public string nickname;
+    public string avatar;
+    public string color;
 
     public int active;
 

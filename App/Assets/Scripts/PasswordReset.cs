@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Networking;
 
@@ -8,7 +9,8 @@ public class PasswordReset : MonoBehaviour
 {
 
     public TMP_InputField emailField;
-
+    public TMP_Text titleText;
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +28,6 @@ public class PasswordReset : MonoBehaviour
     IEnumerator PasswordResetFunction(string email)
     {
     
-        
-
         WWWForm form = new WWWForm();
         form.AddField("loginEmail", email);
 
@@ -43,6 +43,7 @@ public class PasswordReset : MonoBehaviour
         else
         {
             Debug.Log(www.downloadHandler.text);
+            titleText.text = www.downloadHandler.text;
         }
         
     }

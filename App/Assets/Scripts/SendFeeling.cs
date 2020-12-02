@@ -17,10 +17,14 @@ public class SendFeeling : MonoBehaviour
 
     public Sprite[] emojies;
 
+    public Image selectedAvatarImage;
+
     private void Awake()
     {
         feelingScreen.SetActive(true);
         commentScreen.SetActive(false);
+        string[] selectedAvatarId = LeerlingObject.Avatar.Split('-');
+        selectedAvatarImage.sprite = ApplicationSettings.Instance.avatarPack.avatars[int.Parse(selectedAvatarId[1]) - 1];
     }
 
     public void Update()
@@ -74,6 +78,7 @@ public class SendFeeling : MonoBehaviour
             } else
             {
                 Debug.Log(www.downloadHandler.text);
+                ScreenManager.Instance.OpenDashboard();
             }
 
         }
