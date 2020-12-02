@@ -39,6 +39,8 @@ if ($result->num_rows > 0) {
   echo "Email does not exist";
 }
 
+// get feelings based on $return["id"]
+
 
 // pass macAdress to the database
 if ($_POST['macAdress'] != null) {
