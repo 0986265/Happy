@@ -17,29 +17,54 @@ if ($_POST['macAdress'] != null) {
 $result = $conn->DbSelect('*', 'students', "email='{$loginEmail}'");
 
 if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-      if (password_verify($plainPassUnity, $row["password"])) {
+  // output data of each row
+  while ($row = $result->fetch_assoc()) {
+    if (password_verify($plainPassUnity, $row["password"])) {
 
-        $return["id"] = $row["id"];
-        $return["firstname"] = $row["first_name"];
-        $return["lastname"] = $row["last_name"];
-        $return["email"] = $row["email"];
-        $return["nickname"] = $row["nickname"];
-        $return["active"] = $row["active"];
-        $return["avatar"] = $row["avatar"];
-        $return["color"] = $row["color"];
-
-        echo json_encode($return);
+      $studentId = $row["id"];
+      
+      $return["id"] = $row["id"];
+      $return["firstname"] = $row["first_name"];
+      $return["lastname"] = $row["last_name"];
+      $return["email"] = $row["email"];
+      $return["nickname"] = $row["nickname"];
+      $return["active"] = $row["active"];
+      $return["avatar"] = $row["avatar"];
+      $return["color"] = $row["color"];
+      
+      // Get feelings date of logged in student
+      $result2 = $conn->DbSelect('created_at', 'feelings', "student_id='{$studentId}' ORDER BY created_at DESC LIMIT 1");
+      if ($result2->num_rows > 0) {
+        // output data of each row
+        while ($row = $result2->fetch_assoc()) {
+          $latestFeeling = $row["created_at"];
+        }
       } else {
-        echo "Wrong credentials";
+        echo "Error while getting last inserted feeling (database: feelings)";
       }
+
+      // Converting dates to timestamps
+      $dateToday = date("Y-m-d");
+      $dateTimestamp1 = strtotime($latestFeeling);
+      $dateTimestamp2 = strtotime($dateToday);
+
+
+      // Compare the timestamp date
+      if ($dateTimestamp1 >= $dateTimestamp2) {
+        $return["status"] = "false";
+      } else {
+        $return["status"] = "true";
+      }
+
+      echo json_encode($return);
+
+    } else {
+      echo "Wrong credentials";
     }
+  }
 } else {
   echo "Email does not exist";
 }
-
-// get feelings based on $return["id"]
 
 
 // pass macAdress to the database
@@ -47,7 +72,7 @@ if ($_POST['macAdress'] != null) {
   $result2 = $conn->DbUpdate('students', 'macadress', "email='{$loginEmail}'");
 
   if ($result2 == false) {
-    echo("Something went wrong while sending macadress through the database");
+    echo ("Something went wrong while sending macadress through the database");
   }
 }
 
