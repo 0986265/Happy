@@ -14,6 +14,7 @@ public class ProfileCreate : MonoBehaviour
     public GameObject colorScreen;
 
     public GameObject feelingScreen;
+    public GameObject dashboardScreen;
 
     public void Awake()
     {
@@ -87,7 +88,14 @@ public class ProfileCreate : MonoBehaviour
                 LeerlingObject.Color = selectedColor;
                 PlayerPrefs.SetString("Color", LeerlingObject.Color);
                 Debug.Log("leerling Color: " + LeerlingObject.Color);
-                ScreenManager.Instance.OpenScreen(feelingScreen);
+                if (LeerlingObject.Commented == "true")
+                {
+                    FindObjectOfType<ScreenManager>().OpenScreen(feelingScreen);
+                }
+                else
+                {
+                    FindObjectOfType<ScreenManager>().OpenScreen(dashboardScreen);
+                }
             }
 
         }

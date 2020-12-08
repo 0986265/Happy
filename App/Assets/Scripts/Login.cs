@@ -12,6 +12,7 @@ public class Login : MonoBehaviour
 
     public GameObject feelingScreen;
     public GameObject accountScreen;
+    public GameObject dashboardScreen;
 
     void Start()
     {
@@ -61,7 +62,7 @@ public class Login : MonoBehaviour
             {
                 try
                 {
-
+                    Debug.Log(www.downloadHandler.text);
                     LeerlingJSONConvert leerling = LeerlingJSONConvert.CreateFromJSON(www.downloadHandler.text);
 
                     //Setup Logged in Leerling
@@ -73,6 +74,7 @@ public class Login : MonoBehaviour
                     LeerlingObject.Active = leerling.active;
                     LeerlingObject.Avatar = leerling.avatar;
                     LeerlingObject.Color = leerling.color;
+                    LeerlingObject.Commented = leerling.commented;
 
                     PlayerPrefs.SetString("Color", LeerlingObject.Color);
 
@@ -80,17 +82,29 @@ public class Login : MonoBehaviour
                     //if active go to feelings, else go to account creation screen
                     if (LeerlingObject.Active == 1)
                     {
-                        FindObjectOfType<ScreenManager>().OpenScreen(feelingScreen);
-                    } else
+                        Debug.Log(LeerlingObject.Commented);
+                        if (LeerlingObject.Commented == "true")
+                        {
+                            FindObjectOfType<ScreenManager>().OpenScreen(feelingScreen);
+                        }
+                        else
+                        {
+                            FindObjectOfType<ScreenManager>().OpenScreen(dashboardScreen);
+                        }
+
+                    }
+                    else
                     {
                         FindObjectOfType<ScreenManager>().OpenScreen(accountScreen);
                     }
-                }
-                catch
+                } catch
                 {
-
+                    Debug.Log(www.downloadHandler.text);
                     Debug.LogWarning("Credentials not correct");
                 }
+                
+                
+
 
 
             }

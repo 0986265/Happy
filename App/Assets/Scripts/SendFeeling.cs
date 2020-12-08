@@ -78,6 +78,7 @@ public class SendFeeling : MonoBehaviour
             } else
             {
                 Debug.Log(www.downloadHandler.text);
+                LeerlingObject.Commented = "false"; //Is accutaly true lol
                 ScreenManager.Instance.OpenDashboard();
             }
 

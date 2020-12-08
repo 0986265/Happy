@@ -16,6 +16,8 @@ public class LeerlingJSONConvert
 
     public int active;
 
+    public string commented;
+
     public static LeerlingJSONConvert CreateFromJSON(string jsonString)
     {
         return JsonUtility.FromJson<LeerlingJSONConvert>(jsonString);
