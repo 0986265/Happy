@@ -47,14 +47,12 @@ if ($result->num_rows > 0) {
   
         // Compare the timestamp date
         if ($dateTimestamp1 >= $dateTimestamp2) {
-          $return["status"] = "zero";
+          $return["commented"] = "false";
         } else {
-          $return["status"] = "one";
+          $return["commented"] = "true";
         }
-  
       } else {
-        $return["status"] = "one";
-        echo "It's a new student account, or error while getting last inserted feeling (database: feelings)";
+        $return["commented"] = "true";
       }
 
       echo json_encode($return);    
