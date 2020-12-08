@@ -7,6 +7,7 @@ public class Dashboard : MonoBehaviour
 {
 
     public TMP_Text feelingStatus;
+    public Color ErrorColorText;
 
     private void Awake()
     {
@@ -21,6 +22,17 @@ public class Dashboard : MonoBehaviour
         } else
         {
             feelingStatus.text = "Je kan weer een gevoel invullen!";
+        }
+    }
+
+    public void OpenFeelingScreen(GameObject screen)
+    {
+        if (LeerlingObject.Commented == "false")
+        {
+            feelingStatus.color = ErrorColorText;
+        } else
+        {
+            ScreenManager.Instance.OpenScreen(screen);
         }
     }
 }

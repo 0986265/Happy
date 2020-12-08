@@ -45,5 +45,4 @@ public class ScreenManager : MonoBehaviour
         currentScreen = dashboard;
         currentScreen.SetActive(true);
     }
-
 }
