@@ -12,6 +12,14 @@ $timestamp = date('Y-m-d'); // Current day (year, month, day)
 
 $feedback = $conn->DbInsert('feelings', 'student_id, score, comment, created_at', "{$studentId}, {$feelingScore}, '{$feelingComment}', '{$timestamp}'");
 
+echo $studentId;
+echo "      ";
+echo $feelingScore;
+echo "      ";
+echo $feelingComment;
+echo "      ";
+echo $timestamp;
+
 if ($feedback == false) {
   echo("It broke, feedback boolean is false");
 }
