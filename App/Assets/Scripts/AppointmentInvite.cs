@@ -22,7 +22,24 @@ public class AppointmentInvite : MonoBehaviour
 
     public void SubmitAppointment()
     {
-        StartCoroutine(SubmitAppointmentCo());
+        // StartCoroutine(SubmitAppointmentCo());
+        StartCoroutine(GetCounselors());
+    }
+
+    IEnumerator GetCounselors()
+    {
+        UnityWebRequest counselors = UnityWebRequest.Get("http://tle_app_scripts.test/GetCounselors.php");
+
+        yield return counselors.SendWebRequest();
+
+        if(counselors.isNetworkError || counselors.isHttpError)
+        {
+            Debug.Log(counselors.error);
+        }
+        else
+        {
+            Debug.Log(counselors.downloadHandler.text);
+        }
     }
 
     IEnumerator SubmitAppointmentCo()
