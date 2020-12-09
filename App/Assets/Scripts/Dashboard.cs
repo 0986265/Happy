@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Networking;
 
 public class Dashboard : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Dashboard : MonoBehaviour
     private void Awake()
     {
         UpdateFeeling();
+        GetAppointments();
     }
 
     void UpdateFeeling()
@@ -33,6 +35,32 @@ public class Dashboard : MonoBehaviour
         } else
         {
             ScreenManager.Instance.OpenScreen(screen);
+        }
+    }
+
+    public void GetAppointments()
+    {
+        StartCoroutine(GetAppointmentsCo());
+    }
+
+    IEnumerator GetAppointmentsCo()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("studentId", LeerlingObject.Id);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://boostworks.online/GetAppointments.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+            }
+
         }
     }
 }
