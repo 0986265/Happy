@@ -46,7 +46,7 @@ if ($result->num_rows > 0) {
         $dateTimestamp2 = strtotime($dateToday);
   
         // Compare the timestamp date
-        if ($dateTimestamp1 >= $dateTimestamp2) {
+      if ($dateTimestamp1 >= $dateTimestamp2) {
           $return["commented"] = "false";
         } else {
           $return["commented"] = "true";
