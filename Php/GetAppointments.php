@@ -18,9 +18,7 @@ if ($result->num_rows > 0) {
         $return["counselor_id"] = $row["counselor_id"];
         $return["appointment_date"] = $row["appointment_date"];
         $return["attending"] = $row["attending"];
-        $return["created_at"] = $row["created_at"];
         $return["subject"] = $row["subject"];
-        $return["message"] = $row["message"];
         echo json_encode($return);
       }
 } else {
