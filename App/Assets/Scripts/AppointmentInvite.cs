@@ -4,16 +4,20 @@ using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
 using Newtonsoft.Json;
+using System;
+
 
 public class AppointmentInvite : MonoBehaviour
 {
     public TMP_Dropdown subject;
     public TMP_InputField message;
     public TMP_InputField councerlor;
+    public TMP_Dropdown counselorDropdown;
 
     void Start()
     {
-        
+
+        StartCoroutine(FillDropdown());
     }
 
     void Update()
@@ -24,10 +28,10 @@ public class AppointmentInvite : MonoBehaviour
     public void SubmitAppointment()
     {
         // StartCoroutine(SubmitAppointmentCo());
-        StartCoroutine(GetCounselors());
+        
     }
 
-    IEnumerator GetCounselors()
+    IEnumerator GetCounselors(Action<string> data)
     {
         UnityWebRequest counselors = UnityWebRequest.Get("http://tle_app_scripts.test/GetCounselors.php");
 
@@ -40,13 +44,26 @@ public class AppointmentInvite : MonoBehaviour
         else
         {
             // Debug.Log(counselors.downloadHandler.text);
-            CounselorsInfo[] counselorsData = JsonConvert.DeserializeObject<CounselorsInfo[]>(counselors.downloadHandler.text);
 
-            foreach(CounselorsInfo counselor in counselorsData)
-            {
-                Debug.Log(counselor.name);
-            }
+            data(counselors.downloadHandler.text);
+
         }
+    }
+
+    IEnumerator FillDropdown()
+    {
+        counselorDropdown.options.Clear();
+
+        CounselorsInfo[] counselorsData = null;
+
+        yield return StartCoroutine(GetCounselors(data => counselorsData = JsonConvert.DeserializeObject<CounselorsInfo[]>(data)));
+
+        foreach(CounselorsInfo counselor in counselorsData)
+        {
+            // Debug.Log(counselor.name);
+            counselorDropdown.options.Add(new TMP_Dropdown.OptionData() { text = counselor.name });
+        }
+         
     }
 
     IEnumerator SubmitAppointmentCo()
