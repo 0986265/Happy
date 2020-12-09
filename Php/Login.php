@@ -6,7 +6,7 @@ require 'DatabaseConn.php';
 $conn = new DbConn;
 
 // Variables from user app
-$loginEmail = $_POST['loginEmail']; // Fill this variable from Unity
+$loginEmail = mysqli_real_escape_string($_POST['loginEmail']); // Fill this variable from Unity
 $plainPassUnity = $_POST['loginPass']; // Fill with plain password
 
 if ($_POST['macAdress'] != null) {

@@ -1542,6 +1542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &225999798
 GameObject:
   m_ObjectHideFlags: 0
@@ -8045,7 +8047,7 @@ RectTransform:
   - {fileID: 1405063385}
   - {fileID: 306903706}
   m_Father: {fileID: 2139819320}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12260,6 +12262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1622828832
 GameObject:
   m_ObjectHideFlags: 0
@@ -12615,6 +12619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1666087729
 GameObject:
   m_ObjectHideFlags: 0
@@ -13441,7 +13447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1739884253
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13757,6 +13763,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1812829878
 GameObject:
   m_ObjectHideFlags: 0
@@ -13940,6 +13948,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1853517523
 GameObject:
   m_ObjectHideFlags: 0
@@ -15063,7 +15073,7 @@ RectTransform:
   m_Children:
   - {fileID: 222399302}
   m_Father: {fileID: 2139819320}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15489,8 +15499,8 @@ RectTransform:
   - {fileID: 983558405}
   - {fileID: 122266424}
   - {fileID: 1565859731}
-  - {fileID: 1164651619}
   - {fileID: 2109862546}
+  - {fileID: 1164651619}
   - {fileID: 126404075}
   - {fileID: 72334997}
   - {fileID: 1055358805}
