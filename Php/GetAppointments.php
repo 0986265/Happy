@@ -6,7 +6,6 @@ $conn = new DbConn;
 
 // Variables from user app
 $studentId = $_POST['studentId']; // Fill this variable from Unity
-$plainPassUnity = $_POST['loginPass']; // Fill with plain password
 
 // Get data
 $result = $conn->DbSelect('*', 'appointments', "student_id='{$studentId}'");
