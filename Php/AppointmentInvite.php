@@ -7,7 +7,7 @@ $conn = new DbConn;
 $studentId = $_POST['studentId'];
 $counselorId = $_POST['counselorId'];
 $subject = $_POST['subject'];
-$message = $_POST['message'];
+$message = htmlentities($_POST['message']);
 $createdAt = date('Y-m-d'); // Current day (year, month, day)
 
 // $counselorId = 1;
