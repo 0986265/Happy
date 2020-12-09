@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
+using Newtonsoft.Json;
 
 public class AppointmentInvite : MonoBehaviour
 {
@@ -38,7 +39,13 @@ public class AppointmentInvite : MonoBehaviour
         }
         else
         {
-            Debug.Log(counselors.downloadHandler.text);
+            // Debug.Log(counselors.downloadHandler.text);
+            CounselorsInfo[] counselorsData = JsonConvert.DeserializeObject<CounselorsInfo[]>(counselors.downloadHandler.text);
+
+            foreach(CounselorsInfo counselor in counselorsData)
+            {
+                Debug.Log(counselor.name);
+            }
         }
     }
 
