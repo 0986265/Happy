@@ -72,7 +72,8 @@ public class Dashboard : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("studentId", LeerlingObject.Id);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://tle_app_scripts.test/GetAppointments.php", form))
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://boostworks.online/GetAppointments.php", form))
         {
             yield return www.SendWebRequest();
 
