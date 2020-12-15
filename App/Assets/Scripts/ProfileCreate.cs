@@ -16,7 +16,7 @@ public class ProfileCreate : MonoBehaviour
     public GameObject feelingScreen;
     public GameObject dashboardScreen;
 
-    public void Awake()
+    public void OnEnable()
     {
         string[] selectedAvatarId = LeerlingObject.Avatar.Split('-');
         selectedAvatarImage.sprite = ApplicationSettings.Instance.avatarPack.avatars[int.Parse(selectedAvatarId[1]) - 1];
@@ -61,6 +61,15 @@ public class ProfileCreate : MonoBehaviour
     public void ChooseColor(string color)
     {
         selectedColor = color;
+        LeerlingObject.Color = selectedColor;
+        PlayerPrefs.SetString("Color", LeerlingObject.Color);
+
+        UILoadColor[] colorElements = FindObjectsOfType<UILoadColor>();
+
+        foreach (UILoadColor colorobject in colorElements)
+        {
+            colorobject.UpdateColors();
+        }
     }
 
     public void SubmitColor()

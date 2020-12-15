@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Networking;
 
@@ -8,12 +9,17 @@ public class Dashboard : MonoBehaviour
 {
 
     public TMP_Text feelingStatus;
+    public Image avatar;
     public Color ErrorColorText;
 
     private void Awake()
     {
         UpdateFeeling();
         GetAppointments();
+
+        //Check for new Image
+        string[] spriteId = LeerlingObject.Avatar.Split('-');
+        avatar.sprite = ApplicationSettings.Instance.avatarPack.avatars[int.Parse(spriteId[1]) - 1];
     }
 
     void UpdateFeeling()
@@ -59,6 +65,8 @@ public class Dashboard : MonoBehaviour
             else
             {
                 Debug.Log(www.downloadHandler.text);
+                AppointmentJSONConvert leerling = AppointmentJSONConvert.CreateFromJSON(www.downloadHandler.text);
+
             }
 
         }

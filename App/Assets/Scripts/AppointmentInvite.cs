@@ -11,7 +11,6 @@ public class AppointmentInvite : MonoBehaviour
 {
     public TMP_Dropdown subject;
     public TMP_InputField message;
-    public TMP_InputField councerlor;
     public TMP_Dropdown counselorDropdown;
 
     void Start()
@@ -28,6 +27,8 @@ public class AppointmentInvite : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(GetCounsloursCo());
+        message.text = "";
+
     }
 
     IEnumerator GetCounsloursCo()
@@ -51,13 +52,13 @@ public class AppointmentInvite : MonoBehaviour
 
     public void SubmitAppointment()
     {
-        // StartCoroutine(SubmitAppointmentCo());
+        StartCoroutine(SubmitAppointmentCo());
         
     }
 
     IEnumerator GetCounselors(Action<string> data)
     {
-        UnityWebRequest counselors = UnityWebRequest.Get("http://tle_app_scripts.test/GetCounselors.php");
+        UnityWebRequest counselors = UnityWebRequest.Get("http://boostworks.online/GetCounselors.php");
 
         yield return counselors.SendWebRequest();
 
@@ -85,7 +86,7 @@ public class AppointmentInvite : MonoBehaviour
         foreach(CounselorsInfo counselor in counselorsData)
         {
             // Debug.Log(counselor.name);
-            counselorDropdown.options.Add(new TMP_Dropdown.OptionData() { text = counselor.name });
+            counselorDropdown.options.Add(new TMP_Dropdown.OptionData() { text = counselor.id + ":" + counselor.name });
         }
          
     }
@@ -94,7 +95,7 @@ public class AppointmentInvite : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("studentId", LeerlingObject.Id);
-        form.AddField("counselorId", councerlor.text);
+        form.AddField("counselorId", counselorDropdown.options[counselorDropdown.value].text);
         form.AddField("subject", subject.options[subject.value].text);
         form.AddField("message", message.text);
 
@@ -104,7 +105,7 @@ public class AppointmentInvite : MonoBehaviour
 
             if (www.isNetworkError || www.isHttpError)
             {
-                Debug.Log(www.error);
+                Debug.Log("Error:" + www.error);
             }
             else
             {

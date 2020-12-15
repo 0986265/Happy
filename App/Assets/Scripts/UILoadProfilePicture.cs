@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UILoadProfilePicture : MonoBehaviour
 {
-    private void Awake()
+    private void OnEnable()
     {
         string[] spriteId = LeerlingObject.Avatar.Split('-');
         GetComponent<Image>().sprite = ApplicationSettings.Instance.avatarPack.avatars[int.Parse(spriteId[1]) - 1];
