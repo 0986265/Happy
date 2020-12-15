@@ -22,6 +22,7 @@ if ($result->num_rows > 0) {
         $return["appointment_date"] = $row["appointment_date"];
         $return["attending"] = $row["attending"];
         $return["subject"] = $row["subject"];
+        
         array_push($array, $return);
       }
 } else {
